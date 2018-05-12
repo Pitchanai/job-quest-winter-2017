@@ -62,7 +62,7 @@ router.delete('/:id', function (req, res, next) {
       }
       res.json({
         success: true,
-        msg: 'Delete "' + req.params.id + '" successfully.'
+        msg: 'Delete ' + req.params.id + ' successfully.'
       })
     })
   })
@@ -92,7 +92,7 @@ router.post('/:id/toggle', function (req, res, next) {
       }
       res.json({
         success: true,
-        msg: 'Toggle ' + req.params.id + ' to ' + todo2.completed
+        msg: 'Toggle ' + todo2.topic + ' to ' + todo2.completed
       })
     })
   })
