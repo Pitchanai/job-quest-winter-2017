@@ -10,7 +10,7 @@ var TodoSchema = new Schema({
         type: String
     },
     completed : {
-        type: boolean,
+        type: Boolean,
         required: true
     }
 });

@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var cors = require('cors')
+var cors = require('cors');
+var mongoose = require('mongoose');
 
 var Todo = require('../models/todo')
 
-express.use(cors())
+router.use(cors())
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -33,12 +34,12 @@ router.post('/', function(req, res, next) {
       if (err) {
         return res.json({
           success: false,
-          msg: 'Save "' + req.body.topic + '" failed.'
+          msg: 'Save ' + req.body.topic + ' failed.'
         })
       }
       res.json({
         success: true,
-        msg: 'Save "' + req.body.topic + '" successfully.'
+        msg: 'Save ' + req.body.topic + ' successfully.'
       })
     });
   }
@@ -49,14 +50,14 @@ router.delete('/:id', function (req, res, next) {
     if (err) {
       return res.json({
         success: false,
-        msg: 'Delete "' + req.params.id + '" failed.'
+        msg: 'Delete ' + req.params.id + ' failed.'
       })
     }
     todo.remove(function (err2) {
       if (err) {
         return res.json({
           success: false,
-          msg: 'Delete "' + req.params.id + '" failed.'
+          msg: 'Delete ' + req.params.id + ' failed.'
         })
       }
       res.json({
@@ -72,13 +73,13 @@ router.post('/:id/toggle', function (req, res, next) {
     if (err) {
       return res.json({
         success: false,
-        msg: 'Toggle "' + req.params.id + '" failed.'
+        msg: 'Toggle ' + req.params.id + ' failed.'
       })
     }
     if (!todo) {
       return res.json({
         success: false,
-        msg: 'ID "' + req.params.id + '" not found.'
+        msg: 'ID ' + req.params.id + ' not found.'
       })
     }
     todo.completed = !todo.completed
@@ -86,12 +87,12 @@ router.post('/:id/toggle', function (req, res, next) {
       if (err2) {
         return res.json({
           success: false,
-          msg: 'Toggle "' + req.params.id + '" failed.'
+          msg: 'Toggle ' + req.params.id + ' failed.'
         })
       }
       res.json({
         success: true,
-        msg: 'Toggle "' + req.params.id + '" to ' + todo2.completed
+        msg: 'Toggle ' + req.params.id + ' to ' + todo2.completed
       })
     })
   })
